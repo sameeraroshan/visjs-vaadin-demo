@@ -9,12 +9,20 @@ import org.vaadin.visjs.networkDiagram.NetworkDiagram;
 import org.vaadin.visjs.networkDiagram.Node;
 import org.vaadin.visjs.networkDiagram.options.Options;
 
+import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * Created by roshans on 12/13/14.
  */
 public class ShapesView extends HorizontalLayout implements View {
     NetworkDiagram networkDiagram;
     Options options;
+    Node node1;
+    Node node2;
+    Node node3;
+    ExecutorService executorService;
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
@@ -24,9 +32,9 @@ public class ShapesView extends HorizontalLayout implements View {
         networkDiagram.setSizeFull();
         addComponent(networkDiagram);
 
-        Node node1 = new Node(1, "circle", Node.Shape.circle, "group_x");
-        Node node2 = new Node(2, "ellipse", Node.Shape.ellipse, "group_x");
-        Node node3 = new Node(3, "database", Node.Shape.database, "group_x");
+            node1 = new Node(1, "circle", Node.Shape.circle, "group_x");
+            node2 = new Node(2, "ellipse", Node.Shape.ellipse, "group_x");
+            node3 = new Node(3, "database", Node.Shape.database, "group_x");
         Node node4 = new Node(4, "box", Node.Shape.box, "group_x");
         Node node5 = new Node(5, "shapes\nand\nsizes", Node.Shape.box, "group_main");
 
@@ -57,5 +65,71 @@ public class ShapesView extends HorizontalLayout implements View {
                 }
             }
         }
+
+
+        executorService = Executors.newSingleThreadExecutor();
+        executorService.submit(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+
+                    try {
+                        System.out.println("thread is running'''''");
+                        //networkDiagram.removeNode(node1,node2,node3);
+                        //networkDiagram.drawConnections();
+                        Color color = new Color();
+                        String randomColor = getColor();
+                        color.setBackgroundColor(randomColor);
+                        color.setHighlightColor(randomColor);
+                        node1.setColor(color);
+                        randomColor = getColor();
+                        color.setBackgroundColor(randomColor);
+                        color.setHighlightColor(randomColor);
+                        node2.setColor(color);
+                        randomColor = getColor();
+                        color.setBackgroundColor(getColor());
+                        color.setHighlightColor(randomColor);
+                        node3.setColor(color);
+
+                        networkDiagram.updateNode(node1);
+                        System.out.println("update running");
+                        //networkDiagram.drawConnections();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        });
     }
+
+    public String getColor() {
+
+        Random random = new Random();
+        int i = random.nextInt() % 4;
+        switch (i) {
+            case 1:
+                return "red";
+            case 2:
+                return "green";
+            case 3:
+                return "yellow";
+        }
+        return "red";
+    }
+
+    @Override
+    public void detach() {
+        executorService.shutdown();
+        System.out.println("thread stopped-----------------------");
+        super.detach();
+    }
+
+
 }

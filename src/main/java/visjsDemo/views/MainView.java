@@ -44,9 +44,27 @@ public class MainView extends HorizontalLayout implements View {
             }
         });
 
+        Button hierarchicalButton = new Button(Constants.NetworkDiagramDemos.HIERARCHICAL_VIEW);
+        hierarchicalButton.addClickListener(new Button.ClickListener() {
+            @Override
+            public void buttonClick(Button.ClickEvent clickEvent) {
+                getUI().getNavigator().navigateTo(Constants.NetworkDiagramDemos.HIERARCHICAL_VIEW);
+            }
+        });
+
+        Button dynamicDataButton = new Button(Constants.NetworkDiagramDemos.DYNAMIC_DATA_VIEW);
+        dynamicDataButton.addClickListener(new Button.ClickListener() {
+            @Override
+            public void buttonClick(Button.ClickEvent clickEvent) {
+                getUI().getNavigator().navigateTo(Constants.NetworkDiagramDemos.DYNAMIC_DATA_VIEW);
+            }
+        });
+
         networkOptionsLayout.addComponent(basicUsageButton);
         networkOptionsLayout.addComponent(shapesButton);
         networkOptionsLayout.addComponent(socialNetworkButton);
+        networkOptionsLayout.addComponent(hierarchicalButton);
+        networkOptionsLayout.addComponent(dynamicDataButton);
 
         mainLayout.addComponent(networkOptionsLayout);
         addComponent(mainLayout);

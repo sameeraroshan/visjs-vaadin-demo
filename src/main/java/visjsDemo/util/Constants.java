@@ -10,5 +10,7 @@ public class Constants {
         public static String BASIC_USAGE_VIEW = "BASIC_USAGE";
         public static String SHAPES = "SHAPES";
         public static String SOCIAL_NETWORK = "SOCIAL_NETWORK";
+        public static String HIERARCHICAL_VIEW = "HIERARCHICAL_VIEW";
+        public static String DYNAMIC_DATA_VIEW = "DYNAMIC_DATA_VIEW";
     }
 }
