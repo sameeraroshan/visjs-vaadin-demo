@@ -30,11 +30,13 @@ public class ShapesView extends HorizontalLayout implements View {
         options = new Options();
         networkDiagram = new NetworkDiagram(options);
         networkDiagram.setSizeFull();
+
         addComponent(networkDiagram);
 
-            node1 = new Node(1, "circle", Node.Shape.circle, "group_x");
-            node2 = new Node(2, "ellipse", Node.Shape.ellipse, "group_x");
-            node3 = new Node(3, "database", Node.Shape.database, "group_x");
+        node1 = new Node(1, "circle", Node.Shape.circle, "group_x");
+        node2 = new Node(2, "ellipse", Node.Shape.ellipse, "group_x");
+        node3 = new Node(3, "database", Node.Shape.database, "group_x");
+
         Node node4 = new Node(4, "box", Node.Shape.box, "group_x");
         Node node5 = new Node(5, "shapes\nand\nsizes", Node.Shape.box, "group_main");
 
@@ -66,7 +68,6 @@ public class ShapesView extends HorizontalLayout implements View {
             }
         }
 
-
         executorService = Executors.newSingleThreadExecutor();
         executorService.submit(new Runnable() {
             @Override
@@ -74,9 +75,6 @@ public class ShapesView extends HorizontalLayout implements View {
                 while (true) {
 
                     try {
-                        System.out.println("thread is running'''''");
-                        //networkDiagram.removeNode(node1,node2,node3);
-                        //networkDiagram.drawConnections();
                         Color color = new Color();
                         String randomColor = getColor();
                         color.setBackgroundColor(randomColor);
@@ -90,10 +88,7 @@ public class ShapesView extends HorizontalLayout implements View {
                         color.setBackgroundColor(getColor());
                         color.setHighlightColor(randomColor);
                         node3.setColor(color);
-
                         networkDiagram.updateNode(node1);
-                        System.out.println("update running");
-                        //networkDiagram.drawConnections();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -130,6 +125,4 @@ public class ShapesView extends HorizontalLayout implements View {
         System.out.println("thread stopped-----------------------");
         super.detach();
     }
-
-
 }

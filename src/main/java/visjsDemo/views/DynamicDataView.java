@@ -37,6 +37,8 @@ public class DynamicDataView extends HorizontalLayout implements View {
         Node node4 = new Node(4, "node 4");
         Node node5 = new Node(5, "node 5");
 
+
+
         Edge edge1 = new Edge(1, 2);
         Edge edge2 = new Edge(1, 3);
         Edge edge3 = new Edge(2, 5);
@@ -53,15 +55,19 @@ public class DynamicDataView extends HorizontalLayout implements View {
 
         Label id = new Label("Id:");
         Label nodeName = new Label("Label:");
+        Label nodeTitle = new Label("Title");
 
         final TextField idField = new TextField();
         final TextField nodeNameField = new TextField();
+        final TextField nodeTitleField = new TextField();
 
         gridLayout.addComponent(id, 0, 0);
         gridLayout.addComponent(nodeName, 1, 0);
+        gridLayout.addComponent(nodeTitle,2,0);
 
         gridLayout.addComponent(idField, 0, 1);
         gridLayout.addComponent(nodeNameField, 1, 1);
+        gridLayout.addComponent(nodeTitleField, 2, 1);
 
         Button button = new Button("update");
         button.addClickListener(new Button.ClickListener() {
@@ -73,16 +79,18 @@ public class DynamicDataView extends HorizontalLayout implements View {
                 if (node != null) {
                     System.out.println(nodeNameField.getValue());
                     node.setLabel(nodeNameField.getValue());
+                    node.setTitle(nodeTitleField.getValue());
                     networkDiagram.updateNode(node);
                 } else {
                     node = new Node(id, nodeNameField.getValue());
+                    node.setTitle(nodeTitleField.getValue());
                     nodeMap.put(id,node);
                     networkDiagram.addNode(node);
                 }
             }
         });
 
-        gridLayout.addComponent(button, 2, 1);
+        gridLayout.addComponent(button, 3, 1);
         addComponent(gridLayout);
         addComponent(networkDiagram);
     }
