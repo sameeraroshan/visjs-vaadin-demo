@@ -17,7 +17,7 @@ import java.util.Map;
 public class DynamicDataView extends HorizontalLayout implements View {
     NetworkDiagram networkDiagram;
     Options options;
-    Map<Integer, Node> nodeMap;
+    Map<String, Node> nodeMap;
     GridLayout gridLayout;
 
     @Override
@@ -37,18 +37,16 @@ public class DynamicDataView extends HorizontalLayout implements View {
         Node node4 = new Node(4, "node 4");
         Node node5 = new Node(5, "node 5");
 
-
-
         Edge edge1 = new Edge(1, 2);
         Edge edge2 = new Edge(1, 3);
         Edge edge3 = new Edge(2, 5);
         Edge edge4 = new Edge(2, 4);
 
-        nodeMap.put(1, node1);
-        nodeMap.put(2, node2);
-        nodeMap.put(3, node3);
-        nodeMap.put(4, node4);
-        nodeMap.put(5, node5);
+        nodeMap.put("1", node1);
+        nodeMap.put("2", node2);
+        nodeMap.put("3", node3);
+        nodeMap.put("4", node4);
+        nodeMap.put("5", node5);
 
         networkDiagram.addNode(node1, node2, node3, node4, node5);
         networkDiagram.addEdge(edge1, edge2, edge3, edge4);
@@ -73,7 +71,7 @@ public class DynamicDataView extends HorizontalLayout implements View {
         button.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent clickEvent) {
-                int id = Integer.parseInt(idField.getValue());
+                String id =  idField.getValue();
 
                 Node node = nodeMap.get(id);
                 if (node != null) {
