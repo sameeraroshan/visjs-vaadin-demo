@@ -29,6 +29,7 @@ public class DynamicDataView extends HorizontalLayout implements View {
         options.setStabilize(false);
         networkDiagram = new NetworkDiagram(options);
         networkDiagram.setSizeFull();
+        networkDiagram.setImmediate(true);
 
 
         Node node1 = new Node(1, "node 1");

@@ -3,6 +3,7 @@ package visjsDemo.views;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.UI;
 import org.vaadin.visjs.networkDiagram.Color;
 import org.vaadin.visjs.networkDiagram.Edge;
 import org.vaadin.visjs.networkDiagram.NetworkDiagram;
@@ -30,14 +31,14 @@ public class ShapesView extends HorizontalLayout implements View {
         options = new Options();
         networkDiagram = new NetworkDiagram(options);
         networkDiagram.setSizeFull();
-
+        networkDiagram.setImmediate(true);
         addComponent(networkDiagram);
 
         node1 = new Node(1, "circle", Node.Shape.circle, "group_x");
         node2 = new Node(2, "ellipse", Node.Shape.ellipse, "group_x");
         node3 = new Node(3, "database", Node.Shape.database, "group_x");
 
-        Node node4 = new Node(4, "box", Node.Shape.box, "group_x");
+        Node node4 = new Node(4, "box", Node.Shape.box, "group_x", "./VAADIN/images/png/Smiley-Grin-icon.png");
         Node node5 = new Node(5, "shapes\nand\nsizes", Node.Shape.box, "group_main");
 
         Edge edge1 = new Edge(3, 1, Edge.Style.arrow);
@@ -75,20 +76,24 @@ public class ShapesView extends HorizontalLayout implements View {
                 while (true) {
 
                     try {
+                        //networkDiagram.getUI().getSession().lock();
                         Color color = new Color();
                         String randomColor = getColor();
                         color.setBackgroundColor(randomColor);
                         color.setHighlightColor(randomColor);
                         node1.setColor(color);
+                        networkDiagram.updateNode(node1);
                         randomColor = getColor();
                         color.setBackgroundColor(randomColor);
                         color.setHighlightColor(randomColor);
                         node2.setColor(color);
+                        networkDiagram.updateNode(node2);
                         randomColor = getColor();
-                        color.setBackgroundColor(getColor());
+                        color.setBackgroundColor(randomColor);
                         color.setHighlightColor(randomColor);
                         node3.setColor(color);
-                        networkDiagram.updateNode(node1);
+                        networkDiagram.updateNode(node3);
+                        networkDiagram.getUI().getSession().unlock();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -107,7 +112,7 @@ public class ShapesView extends HorizontalLayout implements View {
     public String getColor() {
 
         Random random = new Random();
-        int i = random.nextInt() % 4;
+        int i = random.nextInt() % 9;
         switch (i) {
             case 1:
                 return "red";
@@ -115,8 +120,18 @@ public class ShapesView extends HorizontalLayout implements View {
                 return "green";
             case 3:
                 return "yellow";
+            case 4:
+                return "#000000";
+            case 5:
+                return "#00FF00";
+            case 6:
+                return "#0000FF";
+            case 7:
+                return "#C0C0C0";
+            case 8:
+                return "#00FFFF";
         }
-        return "red";
+        return "#FF00FF";
     }
 
     @Override
