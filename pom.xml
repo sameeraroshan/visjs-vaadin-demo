@@ -5,7 +5,7 @@
 	<groupId>visjsDemo</groupId>
 	<artifactId>visjsDemo</artifactId>
 	<packaging>war</packaging>
-	<version>1.0.0.2</version>
+	<version>1.0.0.3</version>
 	<name>Visjs-vaadin plugin demo</name>
 
 	<properties>
@@ -46,13 +46,13 @@
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-server</artifactId>
 			<version>${vaadin.version}</version>
-			<scope>provided</scope>
+
 		</dependency>
 		<dependency>
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-client-compiled</artifactId>
 			<version>${vaadin.version}</version>
-			<scope>provided</scope>
+
 		</dependency>
 		<!--
 		  Needed when using the widgetset optimizer (custom ConnectorBundleLoaderFactory).
@@ -73,40 +73,41 @@
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-client</artifactId>
 			<version>${vaadin.version}</version>
-			<scope>provided</scope>
+
 		</dependency>
 		<dependency>
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-push</artifactId>
 			<version>${vaadin.version}</version>
-			<scope>provided</scope>
+
 		</dependency>
 		<dependency>
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-themes</artifactId>
 			<version>${vaadin.version}</version>
-			<scope>provided</scope>
+
 		</dependency>
 		<dependency>
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-shared</artifactId>
 			<version>${vaadin.version}</version>
-			<scope>provided</scope>
+
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.0.1</version>
-			<scope>provided</scope>
+
 		</dependency>
         <dependency>
             <groupId>org.vaadin.addon</groupId>
             <artifactId>visjs-addon</artifactId>
-            <version>1.0.0.2</version>
+            <version>1.0.0.3</version>
         </dependency>
     </dependencies>
 
 	<build>
+		<finalName>visjsDemo</finalName>
 		<plugins>
 
 			<plugin>
@@ -204,7 +205,7 @@
 											vaadin-maven-plugin
 										</artifactId>
 										<versionRange>
-											[7.3.3,)
+											[7.3.9,)
 										</versionRange>
 										<goals>
 											<goal>resources</goal>

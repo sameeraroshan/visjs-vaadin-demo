@@ -77,23 +77,29 @@ public class ShapesView extends HorizontalLayout implements View {
 
                     try {
                         //networkDiagram.getUI().getSession().lock();
-                        Color color = new Color();
-                        String randomColor = getColor();
-                        color.setBackgroundColor(randomColor);
-                        color.setHighlightColor(randomColor);
-                        node1.setColor(color);
-                        networkDiagram.updateNode(node1);
-                        randomColor = getColor();
-                        color.setBackgroundColor(randomColor);
-                        color.setHighlightColor(randomColor);
-                        node2.setColor(color);
-                        networkDiagram.updateNode(node2);
-                        randomColor = getColor();
-                        color.setBackgroundColor(randomColor);
-                        color.setHighlightColor(randomColor);
-                        node3.setColor(color);
-                        networkDiagram.updateNode(node3);
-                        networkDiagram.getUI().getSession().unlock();
+                        getUI().getCurrent().access(new Runnable() {
+                            @Override
+                            public void run() {
+                                Color color = new Color();
+                                String randomColor = getColor();
+                                color.setBackgroundColor(randomColor);
+                                color.setHighlightColor(randomColor);
+                                node1.setColor(color);
+                                networkDiagram.updateNode(node1);
+                               /* randomColor = getColor();
+                                color.setBackgroundColor(randomColor);
+                                color.setHighlightColor(randomColor);
+                                node2.setColor(color);
+                                networkDiagram.updateNode(node2);
+                                randomColor = getColor();
+                                color.setBackgroundColor(randomColor);
+                                color.setHighlightColor(randomColor);
+                                node3.setColor(color);
+                                networkDiagram.updateNode(node3);*/
+                            }
+                        });
+
+                        //networkDiagram.getUI().getSession().unlock();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
