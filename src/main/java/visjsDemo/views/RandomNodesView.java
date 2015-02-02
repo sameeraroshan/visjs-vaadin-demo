@@ -54,12 +54,11 @@ public class RandomNodesView extends VerticalLayout implements View {
             public void buttonClick(Button.ClickEvent clickEvent) {
 
                 String value = textField.getValue();
-                if (value != null) { 
+                if (value != null) {
                     int nodesNumber = 0;
                     try {
                         nodesNumber = Integer.parseInt(textField.getValue());
-                    } catch (NumberFormatException e) {
-                        e.printStackTrace();
+                    } catch (Exception e) {
                         Notification.show("enter number");
                         return;
                     }
@@ -71,8 +70,8 @@ public class RandomNodesView extends VerticalLayout implements View {
                         edgeList.add(new Edge(i, to));
                     }
                     networkDiagram.clear();
-                    networkDiagram.updateNode(nodeList);
-                    networkDiagram.updateEdge(edgeList);
+                    networkDiagram.updateNodes(nodeList);
+                    networkDiagram.updateEdges(edgeList);
                 } else {
                     Notification.show("enter number");
                 }
