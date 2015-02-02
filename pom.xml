@@ -5,7 +5,7 @@
 	<groupId>visjsDemo</groupId>
 	<artifactId>visjsDemo</artifactId>
 	<packaging>war</packaging>
-	<version>1.0.0.3</version>
+	<version>1.0.0.4</version>
 	<name>Visjs-vaadin plugin demo</name>
 
 	<properties>
@@ -102,7 +102,7 @@
         <dependency>
             <groupId>org.vaadin.addon</groupId>
             <artifactId>visjs-addon</artifactId>
-            <version>1.0.0.3</version>
+            <version>1.0.0.4</version>
         </dependency>
     </dependencies>
 

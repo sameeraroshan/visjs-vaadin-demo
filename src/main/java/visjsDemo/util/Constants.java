@@ -12,5 +12,6 @@ public class Constants {
         public static String SOCIAL_NETWORK = "SOCIAL_NETWORK";
         public static String HIERARCHICAL_VIEW = "HIERARCHICAL_VIEW";
         public static String DYNAMIC_DATA_VIEW = "DYNAMIC_DATA_VIEW";
+        public static String RANDOM_NODES_VIEW = "RANDOM_NODES_VIEW";
     }
 }

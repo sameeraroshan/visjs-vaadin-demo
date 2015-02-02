@@ -3,6 +3,7 @@ package visjsDemo.views;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.VerticalLayout;
 import visjsDemo.util.Constants;
@@ -24,6 +25,14 @@ public class MainView extends HorizontalLayout implements View {
             @Override
             public void buttonClick(Button.ClickEvent clickEvent) {
                 getUI().getNavigator().navigateTo(Constants.NetworkDiagramDemos.BASIC_USAGE_VIEW);
+            }
+        });
+
+        Button randomNodesButton = new Button(Constants.NetworkDiagramDemos.RANDOM_NODES_VIEW);
+        randomNodesButton.addClickListener(new Button.ClickListener() {
+            @Override
+            public void buttonClick(Button.ClickEvent clickEvent) {
+                getUI().getNavigator().navigateTo(Constants.NetworkDiagramDemos.RANDOM_NODES_VIEW);
             }
         });
 
@@ -61,10 +70,12 @@ public class MainView extends HorizontalLayout implements View {
         });
 
         networkOptionsLayout.addComponent(basicUsageButton);
+        networkOptionsLayout.addComponent(randomNodesButton);
         networkOptionsLayout.addComponent(shapesButton);
         networkOptionsLayout.addComponent(socialNetworkButton);
         networkOptionsLayout.addComponent(hierarchicalButton);
         networkOptionsLayout.addComponent(dynamicDataButton);
+
 
         mainLayout.addComponent(networkOptionsLayout);
         addComponent(mainLayout);

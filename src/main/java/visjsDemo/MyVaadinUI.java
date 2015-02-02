@@ -26,6 +26,7 @@ public class MyVaadinUI extends UI{
         navigator = new Navigator(this,this);
         navigator.addView(Constants.MAIN_VIEW, MainView.class);
         navigator.addView(Constants.NetworkDiagramDemos.BASIC_USAGE_VIEW, BasicUsageView.class);
+        navigator.addView(Constants.NetworkDiagramDemos.RANDOM_NODES_VIEW,RandomNodesView.class);
         navigator.addView(Constants.NetworkDiagramDemos.SHAPES, ShapesView.class);
         navigator.addView(Constants.NetworkDiagramDemos.SOCIAL_NETWORK, SocialNetworkView.class);
         navigator.addView(Constants.NetworkDiagramDemos.HIERARCHICAL_VIEW, HierarchicalLayoutView.class);
